@@ -1,0 +1,13 @@
+name: "Festivities"
+main: "com.firestartermc.festivities.Festivities"
+author: "Firestarter Minecraft Servers"
+website: "https://firestartermc.com"
+version: "1.0"
+api-version: "1.16"
+
+depend:
+  - "Kerosene"
+
+commands:
+  giveitemarchetype:
+    permission: op

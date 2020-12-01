@@ -86,28 +86,25 @@ public class SnowmanScanner extends ItemArchetype implements Listener {
         var key = new NamespacedKey("snowman_scanner", "found");
         var meta = item.getItemMeta();
         var data = meta.getPersistentDataContainer();
-        var stored = data.getOrDefault(key, PersistentDataType.INTEGER_ARRAY, new int[0]);
+        var stored = data.getOrDefault(key, PersistentDataType.BYTE_ARRAY, new byte[7]);
 
-        // check how many are stored, check if this index is in the array already
-        for (int i = 0; i < stored.length; i++) {
-            if (stored[i] == index) {
-                return;
-            }
+        if (stored[index] == 1) {
+            return;
         }
 
-        // add to array if it's not already claimed
-        var updatedArray = Arrays.copyOf(stored, stored.length + 1);
-        updatedArray[updatedArray.length - 1] = index;
-        data.set(key, PersistentDataType.INTEGER_ARRAY, updatedArray);
+        var found = (byte) (stored[6] + 1);
+        stored[index] = 1;
+        stored[6] = found;
+        data.set(key, PersistentDataType.BYTE_ARRAY, stored);
 
-        if (updatedArray.length < 5) {
-            player.sendMessage(MessageUtils.formatColors("&#cfe1ff&lSCANNER: &fYou found " + updatedArray.length + " snowmen.", true));
+        if (found < 5) {
+            player.sendMessage(MessageUtils.formatColors("&#cfe1ff&lSCANNER: &fYou found " + found + " snowmen.", true));
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.0f);
-        } else if (updatedArray.length == 5) {
+        } else if (found == 5) {
             player.sendMessage(MessageUtils.formatColors("&#cfe1ff&lSCANNER: &f&lYou found 5 snowmen and received $2K! Find one more for an extra epic reward.", true));
             player.playSound(player.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0f, 1.0f);
             Kerosene.getKerosene().getEconomy().depositPlayer(player, 2000);
-        } else if (updatedArray.length == 6) {
+        } else if (found == 6) {
             player.sendMessage(MessageUtils.formatColors("&#cfe1ff&lSCANNER: &e&lYou found all 6 snowmen! Enjoy your Unbreaking IV book.", true));
             player.playSound(player.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0f, 1.0f);
 
@@ -119,7 +116,7 @@ public class SnowmanScanner extends ItemArchetype implements Listener {
         }
 
         var lore = item.getLore();
-        lore.set(5, getFoundString(updatedArray.length));
+        lore.set(5, getFoundString(found));
         meta.setLore(lore);
         item.setItemMeta(meta);
         player.getInventory().setItem(player.getInventory().getHeldItemSlot(), item);

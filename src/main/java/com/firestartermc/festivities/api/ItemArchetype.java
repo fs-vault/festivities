@@ -7,7 +7,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class ItemArchetype implements Listener {
+public abstract class ItemArchetype {
 
     private static final NamespacedKey TYPE_KEY = new NamespacedKey("firestarter", "item_type");
     private final String id;

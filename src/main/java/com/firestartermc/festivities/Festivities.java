@@ -5,6 +5,7 @@ import com.firestartermc.festivities.command.GiveItemArchetype;
 import com.firestartermc.festivities.item.MagicalSnowGlobe;
 import com.firestartermc.festivities.item.SnowmanScanner;
 import org.bukkit.NamespacedKey;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
@@ -30,7 +31,10 @@ public class Festivities extends JavaPlugin {
 
     private void register(@NotNull ItemArchetype item) {
         registeredItems.put(item.getId(), item);
-        getServer().getPluginManager().registerEvents(item, this);
+
+        if (item instanceof Listener) {
+            getServer().getPluginManager().registerEvents((Listener) item, this);
+        }
 
         if (item instanceof Runnable) {
             getServer().getScheduler().runTaskTimer(this, (Runnable) item, 0L, 30L);

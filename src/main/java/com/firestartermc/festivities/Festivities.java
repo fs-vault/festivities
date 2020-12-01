@@ -3,6 +3,7 @@ package com.firestartermc.festivities;
 import com.firestartermc.festivities.api.ItemArchetype;
 import com.firestartermc.festivities.command.GiveItemArchetype;
 import com.firestartermc.festivities.item.MagicalSnowGlobe;
+import com.firestartermc.festivities.item.SnowmanScanner;
 import org.bukkit.NamespacedKey;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
@@ -20,6 +21,7 @@ public class Festivities extends JavaPlugin {
     public void onEnable() {
         getCommand("giveitemarchetype").setExecutor(new GiveItemArchetype(this));
         register(new MagicalSnowGlobe());
+        register(new SnowmanScanner());
     }
 
     @Override

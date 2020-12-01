@@ -26,8 +26,8 @@ public abstract class ItemArchetype implements Listener {
         return new ItemStack(Material.AIR);
     }
 
-    public boolean matches(@NotNull ItemStack item) {
-        if (item.getAmount() < 1) {
+    public boolean matches(ItemStack item) {
+        if (item == null || item.getAmount() < 1) {
             return false;
         }
 

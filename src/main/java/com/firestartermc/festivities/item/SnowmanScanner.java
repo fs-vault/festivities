@@ -31,12 +31,12 @@ public class SnowmanScanner extends ItemArchetype implements Listener {
     public SnowmanScanner() {
         super("snowman_scanner");
         var world = Bukkit.getWorld("world");
-        requiredBlocks.add(world.getBlockAt(23240, 67, -44716).getLocation());
-        requiredBlocks.add(world.getBlockAt(23179, 73, -44752).getLocation());
-        requiredBlocks.add(world.getBlockAt(9974, 220, -33967).getLocation());
-        requiredBlocks.add(world.getBlockAt(26787, 58, -28796).getLocation());
-        requiredBlocks.add(world.getBlockAt(-31025, 72, 43497).getLocation());
-        requiredBlocks.add(world.getBlockAt(-310, 44, -28161).getLocation());
+        requiredBlocks.add(world.getBlockAt(-36085, 79, 44993).getLocation()); // shop
+        requiredBlocks.add(world.getBlockAt(23240, 67, -44716).getLocation()); // spawn
+        requiredBlocks.add(world.getBlockAt(23179, 73, -44752).getLocation()); // spawn
+        requiredBlocks.add(world.getBlockAt(9974, 220, -33967).getLocation()); // grinder
+        requiredBlocks.add(world.getBlockAt(26787, 58, -28796).getLocation()); // community garden
+        requiredBlocks.add(world.getBlockAt(-298, 39, -28155).getLocation()); // warp bed
     }
 
     @Override

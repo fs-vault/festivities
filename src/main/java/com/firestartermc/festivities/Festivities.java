@@ -2,6 +2,7 @@ package com.firestartermc.festivities;
 
 import com.firestartermc.festivities.api.ItemArchetype;
 import com.firestartermc.festivities.command.GiveItemArchetype;
+import com.firestartermc.festivities.item.CookiesAndMilk;
 import com.firestartermc.festivities.item.FrozenFishing;
 import com.firestartermc.festivities.item.MagicalSnowGlobe;
 import com.firestartermc.festivities.item.SnowmanScanner;
@@ -25,6 +26,7 @@ public class Festivities extends JavaPlugin {
         register(new MagicalSnowGlobe());
         register(new SnowmanScanner());
         register(new FrozenFishing());
+        register(new CookiesAndMilk());
     }
 
     @Override

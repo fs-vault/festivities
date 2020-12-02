@@ -13,6 +13,7 @@ import org.bukkit.Sound;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
@@ -23,7 +24,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MagicalSnowGlobe extends ItemArchetype implements Runnable {
+public class MagicalSnowGlobe extends ItemArchetype implements Listener, Runnable {
 
     private final List<Biome> requiredBiomes;
 

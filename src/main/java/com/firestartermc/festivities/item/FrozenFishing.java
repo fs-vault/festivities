@@ -4,6 +4,8 @@ import com.firestartermc.festivities.Festivities;
 import com.firestartermc.festivities.api.ItemArchetype;
 import com.firestartermc.kerosene.item.ItemBuilder;
 import com.firestartermc.kerosene.item.LeatherArmorBuilder;
+import com.firestartermc.kerosene.util.MessageUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Material;
@@ -48,6 +50,7 @@ public class FrozenFishing extends ItemArchetype implements Listener {
                         "&freceive a reward!"
                 )
                 .enchant(Enchantment.MENDING, 1)
+                .enchant(Enchantment.LURE, 3)
                 .addItemFlags(ItemFlag.HIDE_ENCHANTS)
                 .persistData(Festivities.ITEM_KEY, PersistentDataType.STRING, getId())
                 .unbreakable()
@@ -75,12 +78,15 @@ public class FrozenFishing extends ItemArchetype implements Listener {
         var firework = (Firework) player.getWorld().spawnEntity(location.add(0.5, 0, 0.5), EntityType.FIREWORK);
         var fireworkMeta = firework.getFireworkMeta();
         fireworkMeta.setPower(2);
-        fireworkMeta.addEffect(FireworkEffect.builder().withColor(Color.RED).flicker(true).build());
+        fireworkMeta.addEffect(FireworkEffect.builder().withColor(Color.BLUE).trail(true).flicker(true).build());
         firework.setFireworkMeta(fireworkMeta);
         firework.detonate();
 
         player.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
         event.getPlayer().playSound(event.getHook().getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 1.0f);
         ((Item) event.getCaught()).setItemStack(reward);
+
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "inferno addtokens " + player.getName() + " 20");
+        player.sendMessage(MessageUtils.formatColors("&#d1daff&lFROZEN &#b8c1ff&lFISHING: &fReceived a reward + 20 vote tokens.", true));
     }
 }

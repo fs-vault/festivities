@@ -29,7 +29,7 @@ public class MagicalSnowGlobe extends ItemArchetype implements Listener, Runnabl
     private final List<Biome> requiredBiomes;
 
     public MagicalSnowGlobe() {
-        super("magical_snow_globe");
+        super("magical_snow_globe", "Magical Snow Globe");
         this.requiredBiomes = Arrays.asList(
                 Biome.BADLANDS,
                 Biome.FROZEN_OCEAN,

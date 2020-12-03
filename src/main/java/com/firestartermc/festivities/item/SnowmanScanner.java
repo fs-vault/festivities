@@ -29,7 +29,7 @@ public class SnowmanScanner extends ItemArchetype implements Listener {
     private final List<Location> requiredBlocks = new ArrayList<>();
 
     public SnowmanScanner() {
-        super("snowman_scanner");
+        super("snowman_scanner", "Snowman Scanner");
         var world = Bukkit.getWorld("world");
         requiredBlocks.add(world.getBlockAt(-36085, 79, 44993).getLocation()); // shop
         requiredBlocks.add(world.getBlockAt(23240, 67, -44716).getLocation()); // spawn

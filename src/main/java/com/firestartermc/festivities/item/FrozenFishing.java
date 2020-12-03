@@ -28,7 +28,7 @@ public class FrozenFishing extends ItemArchetype implements Listener {
     private final ItemStack reward;
 
     public FrozenFishing() {
-        super("frozen_fishing");
+        super("frozen_fishing", "Frozen Fishing");
         this.reward = new LeatherArmorBuilder(LeatherArmorBuilder.LeatherArmorType.BOOTS)
                 .name("&#d1daff&lFROSTY &#b8c1ff&lUGGS")
                 .lore("&7So cold that they freeze water...")

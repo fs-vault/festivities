@@ -11,14 +11,21 @@ public abstract class ItemArchetype {
 
     private static final NamespacedKey TYPE_KEY = new NamespacedKey("firestarter", "item_type");
     private final String id;
+    private final String name;
 
-    public ItemArchetype(@NotNull String id) {
+    public ItemArchetype(@NotNull String id, @NotNull String name) {
         this.id = id;
+        this.name = name;
     }
 
     @NotNull
     public String getId() {
         return id;
+    }
+
+    @NotNull
+    public String getName() {
+        return name;
     }
 
     @NotNull

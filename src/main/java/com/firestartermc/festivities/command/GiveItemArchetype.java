@@ -31,34 +31,32 @@ public class GiveItemArchetype implements TabExecutor {
             return false;
         }
 
-        OfflinePlayer inputPlayer = Bukkit.getOfflinePlayer(args[0]);
+        var inputPlayer = Bukkit.getOfflinePlayer(args[0]);
         if (!inputPlayer.isOnline()) {
+            sender.sendMessage(ChatColor.RED + "The player '" + args[0] + "' is not online.");
             return false;
         }
 
         var itemOptional = festivities.getItem(args[1]);
         if (itemOptional.isEmpty()) {
-            return false;
+            sender.sendMessage(ChatColor.RED + "The item '" + args[1] + "' does not exist.");
+            return true;
         }
 
-        Player player = (Player) inputPlayer;
-        PlayerUtils.giveOrDropItem(player, itemOptional.get().getItem());
-        sender.sendMessage(ChatColor.GREEN + "Gave " + args[1] + " to " + player.getName() + ".");
+        var player = (Player) inputPlayer;
+        var item = itemOptional.get();
+        PlayerUtils.giveOrDropItem(player, item.getItem());
+        sender.sendMessage(ChatColor.GREEN + "Gave " + item.getName() + " to " + player.getName() + ".");
         return true;
     }
 
     @Override
     @Nullable
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
-        if (args.length == 1) {
-            return Bukkit.getOnlinePlayers().stream()
-                    .map(HumanEntity::getName)
-                    .collect(Collectors.toList());
-        }
-
         if (args.length == 2) {
             return festivities.getRegisteredItems().values().stream()
                     .map(ItemArchetype::getId)
+                    .filter(id -> id.toLowerCase().contains(args[1].toLowerCase()))
                     .collect(Collectors.toList());
         }
 

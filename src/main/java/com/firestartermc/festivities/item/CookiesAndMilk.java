@@ -47,7 +47,8 @@ public class CookiesAndMilk extends ItemArchetype implements Listener {
                         "&fA great bit of food. Restores a",
                         "&ffull hunger bar and maximum",
                         "&fsaturation level. They're also",
-                        "&fquite tasty, which is a bonus."
+                        "&fquite tasty, which is a bonus.",
+                        "&7&o(best before 12/25/20)"
                 )
                 .enchantUnsafe(Enchantment.MENDING, 1)
                 .addItemFlags(ItemFlag.HIDE_ENCHANTS)
@@ -138,6 +139,6 @@ public class CookiesAndMilk extends ItemArchetype implements Listener {
         player.setFoodLevel(20);
         player.setSaturation(20);
         player.playSound(player.getLocation(), Sound.BLOCK_LAVA_POP, 1.0f, 1.0f);
-        player.addPotionEffect(PotionEffectType.SPEED.createEffect(10, 2));
+        player.addPotionEffect(PotionEffectType.SPEED.createEffect(15 * 20, 2));
     }
 }

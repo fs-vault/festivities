@@ -60,7 +60,7 @@ public class MagicalSnowGlobe extends ItemArchetype implements Listener, Runnabl
                 )
                 .texture("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmU" +
                         "vNmRkNjYzMTM2Y2FmYTExODA2ZmRiY2E2YjU5NmFmZDg1MTY2YjRlYzAyMTQyYzhkNWFjODk0MWQ4OWFiNyJ9fX0=")
-                .persistData(Festivities.ITEM_KEY, PersistentDataType.STRING, "magical_snow_globe")
+                .persistData(TYPE_KEY, PersistentDataType.STRING, "magical_snow_globe")
                 .persistData(new NamespacedKey("magical_snow_globe", "locked_biomes"), PersistentDataType.STRING, req)
                 .build();
     }

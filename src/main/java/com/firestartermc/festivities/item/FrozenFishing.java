@@ -52,7 +52,7 @@ public class FrozenFishing extends ItemArchetype implements Listener {
                 .enchant(Enchantment.MENDING, 1)
                 .enchant(Enchantment.LURE, 3)
                 .addItemFlags(ItemFlag.HIDE_ENCHANTS)
-                .persistData(Festivities.ITEM_KEY, PersistentDataType.STRING, getId())
+                .persistData(TYPE_KEY, PersistentDataType.STRING, getId())
                 .unbreakable()
                 .build();
     }

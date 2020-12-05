@@ -80,7 +80,7 @@ public class HotCocoa extends ItemArchetype implements Listener {
                         "&8(Christmas 2020)"
                 )
                 .texture("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmI4MDk4ODlkYTM2YWRmNTYxODU4MWJiZjdiNjZkMmQ4ODM5ZTJlYjcyNTRjMzMzMmU0ZjNhMjMwZmEifX19")
-                .persistData(Festivities.ITEM_KEY, PersistentDataType.STRING, getId())
+                .persistData(TYPE_KEY, PersistentDataType.STRING, getId())
                 .build();
     }
 
@@ -186,7 +186,7 @@ public class HotCocoa extends ItemArchetype implements Listener {
     }
 
     private void checkAndCraftWithDelay(Player player) {
-        Bukkit.getScheduler().scheduleSyncDelayedTask(Festivities.Plugin, () -> checkAndCraft(player), 10);
+        Bukkit.getScheduler().scheduleSyncDelayedTask(Festivities.INSTANCE, () -> checkAndCraft(player), 10);
     }
 
     private void checkAndCraft(Player player) {

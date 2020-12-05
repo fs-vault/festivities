@@ -54,7 +54,7 @@ public class SnowmanScanner extends ItemArchetype implements Listener {
                 )
                 .texture("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMz" +
                         "JhNDVjY2RjZWUxZjZmNmFjM2U4ZmZmMDkzYzIyZTkwZWFlOTU5ZmI2MDkyYzliYjJlOTg2NDNhOWYyZDQ0In19fQ==")
-                .persistData(Festivities.ITEM_KEY, PersistentDataType.STRING, getId())
+                .persistData(TYPE_KEY, PersistentDataType.STRING, getId())
                 .build();
     }
 

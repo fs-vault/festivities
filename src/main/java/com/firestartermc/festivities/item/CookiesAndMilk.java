@@ -68,7 +68,7 @@ public class CookiesAndMilk extends ItemArchetype implements Listener {
                         "&r ",
                         getMilkedString(0)
                 )
-                .persistData(Festivities.ITEM_KEY, PersistentDataType.STRING, getId())
+                .persistData(TYPE_KEY, PersistentDataType.STRING, getId())
                 .build();
     }
 

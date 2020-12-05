@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 public abstract class ItemArchetype {
 
-    private static final NamespacedKey TYPE_KEY = new NamespacedKey("firestarter", "item_type");
+    protected static final NamespacedKey TYPE_KEY = new NamespacedKey("firestarter", "item_type");
     private final String id;
     private final String name;
 

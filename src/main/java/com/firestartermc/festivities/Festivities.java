@@ -2,10 +2,7 @@ package com.firestartermc.festivities;
 
 import com.firestartermc.festivities.api.ItemArchetype;
 import com.firestartermc.festivities.command.GiveItemArchetype;
-import com.firestartermc.festivities.item.CookiesAndMilk;
-import com.firestartermc.festivities.item.FrozenFishing;
-import com.firestartermc.festivities.item.MagicalSnowGlobe;
-import com.firestartermc.festivities.item.SnowmanScanner;
+import com.firestartermc.festivities.item.*;
 import org.bukkit.NamespacedKey;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,16 +14,19 @@ import java.util.Optional;
 
 public class Festivities extends JavaPlugin {
 
+    public static Festivities Plugin;
     public static final NamespacedKey ITEM_KEY = new NamespacedKey("firestarter", "item_type");
     public final Map<String, ItemArchetype> registeredItems = new HashMap<>();
 
     @Override
     public void onEnable() {
+        Plugin = this;
         getCommand("giveitemarchetype").setExecutor(new GiveItemArchetype(this));
         register(new MagicalSnowGlobe());
         register(new SnowmanScanner());
         register(new FrozenFishing());
         register(new CookiesAndMilk());
+        register(new HotCocoa());
     }
 
     @Override

@@ -7,6 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -27,6 +28,12 @@ public class Festivities extends JavaPlugin {
         register(new TreeFelling(this));
         register(new ChristmasTreeSapling());
         register(new HotCocoa());
+
+        try {
+            register(new BlockBingo());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

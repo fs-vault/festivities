@@ -215,7 +215,7 @@ public class HotCocoa extends ItemArchetype implements Listener {
             return;
         }
 
-        player.playSound(player.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0f, 1.0f);
+        player.playSound(player.getLocation(), Sound.BLOCK_BREWING_STAND_BREW, 1.0f, 1.0f);
         PlayerUtils.giveOrDropItem(player, hotCocoa);
         player.sendMessage(MessageUtils.formatColors("&#e6d0ba&lHOT COCOA: &fYou made some hot cocoa! Enjoy :>", true));
     }
@@ -256,7 +256,7 @@ public class HotCocoa extends ItemArchetype implements Listener {
         removeFromInventory(inventory, Material.SUGAR, 2, null);
         removeFromInventory(inventory, Material.BROWN_DYE, 2, this::isCocoaPowder);
         var milkSlot = inventory.first(Material.MILK_BUCKET);
-        inventory.setItem(milkSlot, ItemBuilder.of(Material.AIR).build());
+        inventory.setItem(milkSlot, ItemBuilder.of(Material.BUCKET).build());
         inventory.remove(emptyCup);
         return true;
     }

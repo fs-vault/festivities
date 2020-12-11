@@ -36,17 +36,11 @@ import java.util.Arrays;
 
 public class TreeFelling extends ItemArchetype implements Listener {
 
-    private final Festivities festivities;
     private final NamespacedKey felledKey = new NamespacedKey(getId(), "felled");
     private final ListMultimap<Material, Biome> biomeMapping = ArrayListMultimap.create();
 
-    public TreeFelling(Festivities festivities) {
+    public TreeFelling() {
         super("tree_felling", "Tree Felling");
-        this.festivities = festivities;
-
-
-
-
 
         var spruceBiomes = Arrays.asList(
                 Biome.TAIGA,
@@ -185,7 +179,7 @@ public class TreeFelling extends ItemArchetype implements Listener {
             player.playSound(player.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0f, 1.0f);
             player.sendMessage(MessageUtils.formatColors("&#cfe1ff&lFELLING: &fYou've chopped one of every tree type! Plant this sapling in a flower pot to receive your reward.", true));
             item.setAmount(0);
-            festivities.getItem("christmas_tree_sapling").ifPresent(sapling -> PlayerUtils.giveOrDropItem(player, sapling.getItem()));
+            Festivities.INSTANCE.getItem("christmas_tree_sapling").ifPresent(sapling -> PlayerUtils.giveOrDropItem(player, sapling.getItem()));
         } else {
             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
             var lore = meta.getLore();

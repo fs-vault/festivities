@@ -2,10 +2,14 @@ package com.firestartermc.festivities.api;
 
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
+
+import javax.swing.text.html.Option;
+import java.util.Optional;
 
 public abstract class ItemArchetype {
 
@@ -41,5 +45,15 @@ public abstract class ItemArchetype {
         var container = item.getItemMeta().getPersistentDataContainer();
         var type = container.get(TYPE_KEY, PersistentDataType.STRING);
         return type != null && type.equals(getId());
+    }
+
+    public Optional<ItemStack> get(Player player) {
+        for (var item : player.getInventory().getContents()) {
+            if (matches(item)) {
+                return Optional.of(item);
+            }
+        }
+
+        return Optional.empty();
     }
 }

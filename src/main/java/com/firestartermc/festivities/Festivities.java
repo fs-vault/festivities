@@ -21,13 +21,20 @@ public class Festivities extends JavaPlugin {
     public void onEnable() {
         INSTANCE = this;
         getCommand("giveitemarchetype").setExecutor(new GiveItemArchetype(this));
-        register(new MagicalSnowGlobe());
-        register(new SnowmanScanner());
-        register(new FrozenFishing());
-        register(new CookiesAndMilk());
-        register(new TreeFelling(this));
-        register(new ChristmasTreeSapling());
-        register(new HotCocoa());
+        register(
+                new MagicalSnowGlobe(),
+                new SnowmanScanner(),
+                new FrozenFishing(),
+                new CookiesAndMilk(),
+                new TreeFelling(),
+                new ChristmasTreeSapling(),
+                new HotCocoa(),
+                new WinterCocktail(),
+                new BottleOfLuck(),
+                new FlightPotion(),
+                new WorldDomination()
+                // new SnowballFight()
+        );
 
         try {
             register(new BlockBingo());
@@ -40,15 +47,17 @@ public class Festivities extends JavaPlugin {
     public void onDisable() {
     }
 
-    private void register(@NotNull ItemArchetype item) {
-        registeredItems.put(item.getId(), item);
+    private void register(@NotNull ItemArchetype... items) {
+        for (var item : items) {
+            registeredItems.put(item.getId(), item);
 
-        if (item instanceof Listener) {
-            getServer().getPluginManager().registerEvents((Listener) item, this);
-        }
+            if (item instanceof Listener) {
+                getServer().getPluginManager().registerEvents((Listener) item, this);
+            }
 
-        if (item instanceof Runnable) {
-            getServer().getScheduler().runTaskTimer(this, (Runnable) item, 0L, 30L);
+            if (item instanceof Runnable) {
+                getServer().getScheduler().runTaskTimer(this, (Runnable) item, 0L, 30L);
+            }
         }
     }
 

@@ -1,5 +1,6 @@
 package com.firestartermc.festivities.api;
 
+import com.firestartermc.festivities.Festivities;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
@@ -20,6 +21,9 @@ public abstract class ItemArchetype {
     public ItemArchetype(@NotNull String id, @NotNull String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public void register(Festivities festivities) {
     }
 
     @NotNull
@@ -45,6 +49,16 @@ public abstract class ItemArchetype {
         var container = item.getItemMeta().getPersistentDataContainer();
         var type = container.get(TYPE_KEY, PersistentDataType.STRING);
         return type != null && type.equals(getId());
+    }
+
+    public boolean holding(Player player) {
+        var inventory = player.getInventory();
+
+        if (matches(inventory.getItemInMainHand())) {
+            return true;
+        }
+
+        return matches(inventory.getItemInOffHand());
     }
 
     public Optional<ItemStack> get(Player player) {

@@ -15,6 +15,6 @@ repositories {
 
 dependencies {
     compileOnly 'com.destroystokyo.paper:paper-api:1.16.4-R0.1-SNAPSHOT'
-    compileOnly 'xyz.nkomarn:hydrinity:1.16.4-R0.1-SNAPSHOT'
+    compileOnly 'xyz.nkomarn:calcite:1.16.4-R0.1-SNAPSHOT'
     compileOnly 'com.firestartermc:Kerosene:5.0'
 }

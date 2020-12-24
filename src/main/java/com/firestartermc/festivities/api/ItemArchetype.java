@@ -26,6 +26,9 @@ public abstract class ItemArchetype {
     public void register(Festivities festivities) {
     }
 
+    public void unregister(Festivities festivities) {
+    }
+
     @NotNull
     public String getId() {
         return id;

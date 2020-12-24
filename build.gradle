@@ -5,6 +5,9 @@ plugins {
 group 'com.firestartermc'
 version '1.0'
 
+sourceCompatibility = '14'
+targetCompatibility = '14'
+
 repositories {
     mavenLocal()
     mavenCentral()

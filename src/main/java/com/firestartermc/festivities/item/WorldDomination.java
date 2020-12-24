@@ -89,6 +89,7 @@ public class WorldDomination extends ItemArchetype implements Listener {
 
     @EventHandler
     public void onSpawn(EntitySpawnEvent event) {
+        if (true) return; // Disabled as of 12/23/20
         if (event.getEntityType() != EntityType.SNOWMAN) {
             return;
         }

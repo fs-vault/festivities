@@ -59,6 +59,10 @@ public class FrozenScythe extends ItemArchetype implements Listener {
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.LOWEST)
     public void onTill(PlayerInteractEvent event) {
+        if (event.isCancelled()) {
+            return;
+        }
+
         var block = event.getClickedBlock();
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) {
             return;
@@ -84,6 +88,10 @@ public class FrozenScythe extends ItemArchetype implements Listener {
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.LOWEST)
     public void onEntityDamage(EntityDamageByEntityEvent event) {
+        if (event.isCancelled()) {
+            return;
+        }
+
         if (!(event.getEntity() instanceof LivingEntity)) {
             return;
         }
@@ -93,7 +101,7 @@ public class FrozenScythe extends ItemArchetype implements Listener {
         }
 
         var player = (Player) event.getDamager();
-        if (!holding(player)) {
+        if (!matches(player.getInventory().getItemInMainHand())) {
             return;
         }
 

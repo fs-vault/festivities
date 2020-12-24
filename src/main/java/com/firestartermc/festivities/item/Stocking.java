@@ -43,12 +43,12 @@ public class Stocking extends ItemArchetype implements Listener {
 
     @Override
     public void register(Festivities festivities) {
-        /*var recipe = new ShapedRecipe(RECIPE_KEY, getItem())
+        var recipe = new ShapedRecipe(RECIPE_KEY, getItem())
                 .shape("***", "xyx", "xxx")
                 .setIngredient('*', Material.WHITE_WOOL)
                 .setIngredient('x', Material.RED_WOOL)
                 .setIngredient('y', Material.CHEST);
-        Bukkit.getServer().addRecipe(recipe);*/
+        Bukkit.getServer().addRecipe(recipe);
     }
 
     @Override
